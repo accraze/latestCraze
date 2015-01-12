@@ -1,0 +1,11 @@
+{
+  "name": "latestCraze",
+  "version": "0.23.0",
+  "description": "widgets 4 the people!",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "andrew craze",
+  "license": "ISC"
+}

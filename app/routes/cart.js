@@ -39,7 +39,7 @@ module.exports = {
                 req.session.cart.products[req.params.id].quantity = req.session.cart.products[req.params.id].quantity + 1;
             }
             
-            // Total cart
+            // set cart total
             req.session.cart.count = 0;
             req.session.cart.total = 0;
             _.each(req.session.cart.products, function (product) {
@@ -72,7 +72,7 @@ module.exports = {
                 
             }
             
-            // Total cart
+            // cart total
             req.session.cart.count = 0;
             req.session.cart.total = 0;
             _.each(req.session.cart.products, function (product) {
@@ -80,13 +80,13 @@ module.exports = {
                 req.session.cart.total = req.session.cart.total + (product.price * product.quantity);
             });
             
-            // Remove cart if empty
+            // hide if cart empty
             if (req.session.cart.count === 0) {
                 delete req.session.cart;
                 res.render('cart', {cart: undefined});
             } 
             
-            // Respond with rendered cart
+            // render cart
             res.render('cart/cart', {cart: req.session.cart});
 
     },

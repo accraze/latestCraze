@@ -39,10 +39,10 @@ module.exports = function(a, p) {
         p.authenticate('local', function(err, user, info) {
             if (err){return next(err);} 
             
-            // If failed return fail - needs improving
+            // dumb fail
             if (!user) { return res.send({status:"fail"})} 
             
-            // Log in user using passport's log in function
+            // login with passport
             req.logIn(user, function(err) { 
                 if (err){return next(err);} 
                 
@@ -63,5 +63,6 @@ module.exports = function(a, p) {
     a.get('/checkout/cart', checkout.getCart);
     a.get('/checkout/order', checkout.getOrder);
     a.post('/checkout/order', checkout.postOrder);
+    a.get('/checkout/orderComplete', checkout.orderComplete);
     
 };

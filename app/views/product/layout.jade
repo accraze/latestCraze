@@ -31,14 +31,6 @@ html(lang="en")
     .container
       a(href="/")
         img(src="/img/style/header.png")
-      .navbar
-        .navbar-inner
-          ul.nav
-            each category in categories
-              li
-                a(href="/category/#{category.seo}") #{category.name}
-          form.navbar-search.pull-right
-            input.search-query(type="text", placeholder="Search")
       .main
         block content
       hr

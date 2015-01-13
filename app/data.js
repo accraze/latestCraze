@@ -29,14 +29,6 @@ module.exports = {
     },
 
     // Get categories for top nav
-    getTopCategories: function(callback){ 
-        var query = Category.find({topnav : true});
-        query.exec(function(err, categories) { 
-            
-            // Execute callback
-            callback(null, categories);
-        });
-    },
   
     // Get featured products
     getFeatured: function(callback) {
@@ -47,38 +39,6 @@ module.exports = {
             
             // Execute callback
             callback(null, featuredProducts);
-        });
-    },
-  
-    // Get products in a category
-    getCategoryProducts: function(category, callback) {
-    
-        // Find category for url
-        var categoryQuery = Category.findOne({seo : category});
-        
-        // Execute query
-        categoryQuery.exec(function(err, category){
-            
-            // Callback with error if error
-            if (err) return callback(err);
-            
-            // Check if category exists
-            if (!category) {
-                
-                // Pass an error if not
-                callback(new Error('Category not found!'));
-                
-            // Continue if it does
-            } else {
-                
-                // Find products in given category
-                var productQuery = Product.find({category : category.name});
-                productQuery.exec(function(err, categoryProducts) {
-                        
-                    // Execute callback passed from route
-                    callback(err, categoryProducts, category.name);
-                });
-            }
         });
     },
   
@@ -123,15 +83,7 @@ module.exports = {
                 first: userInfo.fname,
                 last: userInfo.lname
             },
-            address : { 
-                address1: userInfo.address1,
-                address2: userInfo.address2,
-                town: userInfo.town,
-                province: userInfo.province,
-                pcd: userInfo.pcd,
-                country : userInfo.country
-            },
-            contactNum : userInfo.contactNum,
+            
             email: userInfo.email,
             password: userInfo.password
         });

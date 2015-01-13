@@ -54,6 +54,8 @@ app.listen(3000, function() {
     console.log('app is listening on port 3000');
 });
 
+module.exports = app;
+
 
 // Handle all uncaught errors
 process.on('uncaughtException', function(err) {

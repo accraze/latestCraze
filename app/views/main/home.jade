@@ -1,9 +1,9 @@
 extends layout
 block content
   hr
-  h4 Featured
+  h4 Music
   ul.thumbnails
-      each product in featured
+      each product in products
         li.span3
           a(href="/product/#{product.name}").thumbnail
             img(src="/img/style/widgetSm.png", alt="")

@@ -30,13 +30,21 @@ module.exports = {
                 });  
         });
     },
+    // Get register page
+    getRegister: function(req, res) {
+            
+            // Render registered page
+            res.render('account/register', {
+                store: config.store.name,
+                title: 'Create an Account',
+                logged: req.isAuthenticated(),
+                user: req.user,
+                cart: req.session.cart
+            });
+    },
     
     // Get registered page
     getRegistered: function(req, res) {
-        
-        // Get categories for top nav
-        db.getTopCategories(function(err, categories) {
-            if (err) {console.log(err)}
             
             // Render registered page
             res.render('account/registered', {
@@ -44,29 +52,20 @@ module.exports = {
                 title: 'Thanks for registering!',
                 logged: req.isAuthenticated(),
                 user: req.user,
-                cart: req.session.cart,
-                categories: categories,
+                cart: req.session.cart
             });
-        });
     },
 
     // Get account page
-    getAccount: function(req, res) {
-        
-        // Get categories for top nav
-        db.getTopCategories(function(err, categories) {
-            if (err) {console.log(err)}
-            
+    getAccount: function(req, res) {        
             // Render account page
             res.render('account/account', {
                 store: config.store.name,
                 title: 'My Account',
                 logged: req.isAuthenticated(),
                 user: req.user,
-                cart: req.session.cart,
-                categories: categories,
+                cart: req.session.cart
             });
-        });
     },
     // Log user out when account/logout requested
     getLogin: function(req, res){

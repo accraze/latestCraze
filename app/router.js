@@ -28,8 +28,9 @@ module.exports = function(a, p) {
     
     // Account routes
     a.get('/account/home', ensureAuthenticated, account.getAccount);
+    a.get('/account/register', account.getRegister);
     a.post('/account/register', account.postRegister);
-    a.get('/account/login', account.getLogout);
+    a.get('/account/login', account.getLogin);
     a.get('/account/logout', account.getLogout);
     a.get('/account/registered', account.getRegistered);
     

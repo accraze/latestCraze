@@ -11,6 +11,7 @@ block content
           th Quantity
           th Remove
         tbody
+        if(cart)
           each product in cart.products
             tr
               td  
@@ -18,11 +19,15 @@ block content
               td  $#{product.price}
               td= product.quantity
               td 
-                i.icon-remove
-  .row
-     .pull-right
-        h4 Total: $#{cart.total}
-        if (!locals.logged)
-            a(href="/account/login").btn.btn-primary Login to Checkout
+                i(remId='#{product.id}').icon-remove
         else
+          p.lead Cart is Empty!
+  .row
+
+     .pull-right
+        if(cart)
+          h4 Total: $#{cart.total}
+          if (!locals.logged)
+            a(href="/account/login").btn.btn-primary Login to Checkout
+          else
             a(href="/checkout/order").btn.btn-primary Continue As #{user.name.first}

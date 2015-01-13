@@ -84,6 +84,7 @@ module.exports = {
         });
 
         //clear out cart!
+        delete req.session.cart
     },
 
     //order completed

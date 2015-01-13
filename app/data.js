@@ -16,7 +16,7 @@ passport.deserializeUser(function(id, done) {User.findById(id, function (err, us
 // Export functions
 module.exports = {
 
-    // Connect to database
+    // connect to database
     startup: function(dbToUse) {
         
         // Connect mongoose and select db
@@ -27,18 +27,16 @@ module.exports = {
             console.log('Connected to database!');
         });
     },
-
-    // Get categories for top nav
   
-    // Get featured products
-    getFeatured: function(callback) {
+    // get all products
+    getProducts: function(callback) {
         
         // Find products where featured is true
-        var query = Product.find({featured : true});
-        query.exec(function(err, featuredProducts) { 
+        var query = Product.find({});
+        query.exec(function(err, products) { 
             
             // Execute callback
-            callback(null, featuredProducts);
+            callback(null, products);
         });
     },
   

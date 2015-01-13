@@ -8,7 +8,7 @@ module.exports = {
     getHome: function(req, res) {
                     
         // Get featured products
-        db.getFeatured(function(err, featured) { 
+        db.getProducts(function(err, products) { 
             if (err) {console.log(err)}
             
             // get home page
@@ -18,7 +18,7 @@ module.exports = {
                 logged: req.isAuthenticated(),
                 user: req.user,
                 cart: req.session.cart,
-                featured: featured
+                products: products
             });
         });
     },

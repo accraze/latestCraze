@@ -25,7 +25,6 @@ module.exports = function(a, p) {
     // Modal routes
     a.get('/modals/register', modals.getRegister);
     a.get('/modals/login', modals.getLogin);
-    a.get('/modals/terms', modals.getTerms);
     
     // Account routes
     a.get('/account/home', ensureAuthenticated, account.getAccount);
@@ -63,6 +62,5 @@ module.exports = function(a, p) {
     a.get('/checkout/cart', checkout.getCart);
     a.get('/checkout/order', checkout.getOrder);
     a.post('/checkout/order', checkout.postOrder);
-    a.get('/checkout/orderComplete', checkout.orderComplete);
     
 };

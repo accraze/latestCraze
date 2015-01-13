@@ -57,24 +57,6 @@ app.listen(3000, function() {
 
 module.exports = app;
 
-
-              // var newProduct = new Product ({
-              //           name: 'Widget',
-              //           featured: true,
-              //           pricing: {
-              //               retail: 240,
-              //               cost: 130
-              //           },
-              //       });
-                    
-              //   newProduct.save(function(err){
-                    
-              //       if (err) {throw err;}
-                    
-              //       // Redirect back to categories
-
-              //   });
-
 // Handle all uncaught errors
 process.on('uncaughtException', function(err) {
     console.log(err);

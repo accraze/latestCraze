@@ -11,7 +11,7 @@ module.exports = {
         db.getFeatured(function(err, featured) { 
             if (err) {console.log(err)}
             
-            // Render home page
+            // get home page
             res.render('main/home', {
                 store: config.store.name,
                 title: config.store.tagline,
@@ -24,40 +24,26 @@ module.exports = {
     },
 
     // Get about page
-    getAbout: function(req, res) {
-        
-        // Get categories for top nav
-        db.getTopCategories(function(err, categories) {
-            if (err) {console.log(err)}
-            
-            // Render contact page
-            res.render('main/about', {
-                store: config.store.name,
-                title: 'About',
-                logged: req.isAuthenticated(),
-                user: req.user,
-                cart: req.session.cart,
-                categories: categories,
-            });
+    getAbout: function(req, res) {         
+        // get about page
+        res.render('main/about', {
+            store: config.store.name,
+            title: 'About',
+            logged: req.isAuthenticated(),
+            user: req.user,
+            cart: req.session.cart,
         });
     },
     
     // Get contact page
     getContact: function(req, res) {
-        
-        // Get categories for top nav
-        db.getTopCategories(function(err, categories) {
-            if (err) {console.log(err)}
-            
-            // Render contact page
+            // get contact page
             res.render('main/contact', {
                 store: config.store.name,
                 title: 'Contact',
                 logged: req.isAuthenticated(),
                 user: req.user,
-                cart: req.session.cart,
-                categories: categories,
+                cart: req.session.cart
             });
-        });
     },
 };

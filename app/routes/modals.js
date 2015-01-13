@@ -11,10 +11,5 @@ module.exports = {
     // Get register modal
     getRegister: function(req, res) {
         res.render('modals/register');
-    },
-        
-    // Get terms and conditions modal
-    getTerms: function(req, res) {
-        res.render('modals/terms');
     }
 };

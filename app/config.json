@@ -1,0 +1,14 @@
+{
+    
+    "connection" : "mongodb://localhost/latestCraze",
+    "cookie_secret" : "meowmeow",
+    
+    "store" : {
+        
+        "name" : "The Latest Craze",
+        "tagline" : "Widgets for the people!",
+        "owner" : "Andrew Craze"
+        
+    }
+    
+}

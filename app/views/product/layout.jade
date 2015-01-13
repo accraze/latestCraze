@@ -27,7 +27,7 @@ html(lang="en")
                 li       
                   a(href="/account/logout") Logout
             #cart
-              include cart/cart
+              include ../cart/cart
     .container
       a(href="/")
         img(src="/img/style/header.png")
@@ -40,7 +40,7 @@ html(lang="en")
           form.navbar-search.pull-right
             input.search-query(type="text", placeholder="Search")
       .main
-        h1= title
+        block content
       hr
     script(src="http://code.jquery.com/jquery.min.js", type="text/javascript")
     script(src="/js/bootstrap.min.js", type="text/javascript")

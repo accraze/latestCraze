@@ -1,6 +1,8 @@
 var db = require("../data");
 var config = require("../config.json");
 var passport = require('passport');
+var stripe = require('stripe')('sk_test_a2zbgWTvWNmVpzJrqs5EitV0');
+
 
 // Export functions
 module.exports = {
@@ -16,62 +18,6 @@ module.exports = {
             });
     },
     
-    // Guest checkout
-    getGuest: function (req,res) {
-        
-            if(!req.isAuthenticated()) {
-                
-                res.render('checkout/guest', {
-                    
-                store: config.store.name,
-                title: 'Guest Checkout',
-                logged: req.isAuthenticated(),
-                user: req.user,
-                cart: req.session.cart,
-                });
-                
-            } else {
-                
-                // Redirect if logged in
-                res.redirect('/checkout/order');
-            }
-    },
-    
-    // Handle posted guest checkout
-    postGuest: function(req, res) {
-    
-        // Save user in database
-        db.saveUser({
-            fname : req.param('nameFirst'),
-            lname : req.param('nameLast'),
-            email : req.param('email'),
-            password : req.param('password'),
-            contactNum : req.param('contactNum'),
-            address1: req.param('address1'), 
-            address2: req.param('address2'), 
-            town: req.param('addressTown'), 
-            province: req.param('addressProvince'), 
-            pcd: req.param('addressPcd'), 
-            country : req.param('addressCountry')
-        }, 
-            
-            function(err, newUser) {
-                if (err) {console.log(err);}
-                
-                // Set user to user just saved
-                req.user = newUser;
-                
-                // Log in new user with passport
-                passport.authenticate('local')(req, res, function () {
-                    
-                    // Redirect new user to order page
-                    res.redirect('/checkout/order');
-                
-                });  
-        });
-    },
-
-    
     // Order form
     getOrder: function (req,res) {
                 res.render('checkout/order', {
@@ -85,8 +31,20 @@ module.exports = {
     
     // Handle posted order
     postOrder: function(req, res) {
-        
-        
-
-    },
+        var stripeToken = req.body.stripeToken;
+        var amount = req.body.amount;
+     
+        stripe.charges.create({
+            card: stripeToken,
+            currency: 'usd',
+            amount: amount
+        },
+        function(err, charge) {
+            if (err) {
+                res.send(500, err);
+            } else {
+                res.send(204);
+            }     
+        });
+    }
 };

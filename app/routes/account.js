@@ -68,6 +68,13 @@ module.exports = {
             });
         });
     },
+    // Log user out when account/logout requested
+    getLogin: function(req, res){
+        
+        // Redirect to modal login page
+        res.render('account/login');
+    
+    },
 
     // Log user out when account/logout requested
     getLogout: function(req, res){

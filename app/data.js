@@ -83,8 +83,8 @@ module.exports = {
     },
   
     // Find product for url
-    findProductBySEO: function(seo, callback) {
-        var query = Product.findOne({seo : seo});
+    findProductByName: function(name, callback) {
+        var query = Product.findOne({name : name});
         query.exec(function(err, product) {  
             
             // Check if product exists

@@ -6,14 +6,14 @@ var config = require("../config.json");
 module.exports = {
 
     // Show a product from url request
-    getBySEO: function(req, res) {
+    getByName: function(req, res) {
         
         // Get categories for top nav
         db.getTopCategories(function(err, categories) { 
             if (err) {console.log(err)}
         
             // Fing requested product
-            db.findProductBySEO(req.params.seo, function(err, product) { 
+            db.findProductByName(req.params.name, function(err, product) { 
                 
                 // Catch product not found
                 if (err) {
@@ -29,7 +29,7 @@ module.exports = {
                 
                 } else {
             
-                    // Render product view
+                    // Render basic product view
                     res.render('product/product', {
                         store: config.store.name,
                         title: product.name,

@@ -97,4 +97,17 @@ describe('Account Routes', function () {
   })
 })
 
+describe('Checkout Routes', function () {
+  describe('Cart Page', function() {
+    it("renders successfully", function(done) {
+      request(app).get('/checkout/cart').expect(200, done);    
+    })
+  })
+
+  describe('Order Page', function() {
+    it("renders successfully", function(done) {
+      request(app).get('/checkout/order').expect(200, done);    
+    })
+  })
+})
 

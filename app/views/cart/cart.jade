@@ -11,7 +11,7 @@
         ul.dropdown-menu
             each product in cart.products
                 li
-                  a(href='/product/#{product.seo}') 
+                  a(href='/product/#{product.name}') 
                     i(remId='#{product.id}').icon-remove.pull-right
                     | #{product.name}
             li.divider

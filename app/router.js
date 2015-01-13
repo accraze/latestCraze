@@ -30,6 +30,7 @@ module.exports = function(a, p) {
     // Account routes
     a.get('/account/home', ensureAuthenticated, account.getAccount);
     a.post('/account/register', account.postRegister);
+    a.get('/account/login', account.getLogout);
     a.get('/account/logout', account.getLogout);
     a.get('/account/registered', account.getRegistered);
     
@@ -51,11 +52,8 @@ module.exports = function(a, p) {
         })(req, res, next);
     });
     
-    // Category
-    a.get('/category/:seo', category.getBySEO);
-    
     // Product
-    a.get('/product/:seo', product.getBySEO);
+    a.get('/product/:name', product.getByName);
     
     // Cart
     a.post('/cart/add/:id', cart.addProduct);
@@ -63,8 +61,6 @@ module.exports = function(a, p) {
     
     // Checkout
     a.get('/checkout/cart', checkout.getCart);
-    a.get('/checkout/guest', checkout.getGuest);
-    a.post('/checkout/guest', checkout.postGuest);
     a.get('/checkout/order', checkout.getOrder);
     a.post('/checkout/order', checkout.postOrder);
     

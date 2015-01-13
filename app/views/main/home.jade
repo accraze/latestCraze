@@ -7,10 +7,10 @@ block content
   ul.thumbnails
       each product in featured
         li.span3
-          a(href="/product/#{product.seo}").thumbnail
+          a(href="/product/#{product.name}").thumbnail
             img(src="http://placehold.it/210x160", alt="")
             h6 #{product.name}
-              p.pull-right £#{product.pricing.retail}
+              p.pull-right $#{product.pricing.retail}
 block scripts
   
   

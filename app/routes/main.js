@@ -1,11 +1,10 @@
-// Require needed modules
+/// IMPORTS ///
 var db = require('../data'),
 config = require('../config.json');
 
-// Export functions
 module.exports = {
 
-    // Get shop home page
+    // Get home page
     getHome: function(req, res) {
         
         // Get categories for top nav

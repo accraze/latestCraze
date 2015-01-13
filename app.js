@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var mongoStore = require('connect-mongo')(expressSession);
-// config files
-var db = require('./app/data');
+var passport = require('passport');
 var config = require('./app/config.json');
+var db = require('./app/data');
 var info = require('./package.json');
 
 
@@ -18,12 +18,13 @@ db.startup(config.connection);
 var env = process.env.Node_ENV || 'development';
 if ('development' == env) {
     // Set up jade
-    app.set('views', __dirname + '/shop/views');
+    app.set('views', __dirname + '/app/views');
     app.set('view engine', 'jade');
     
     //setup express middleware
     app.use(cookieParser());
-    app.use(bodyParser());
+    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json());
 
     // set up sessions
     app.use(expressSession({
@@ -32,15 +33,21 @@ if ('development' == env) {
         // expire after 23 days
         cookie: { maxAge: new Date(Date.now() + 1987200) },
         // session secret from config file
-        secret: config.cookie_secret
+        secret: config.cookie_secret,
+        saveUninitialized: true,
+        resave: true
         }));
     
+    // Set up passport
+    app.use(passport.initialize());
+    app.use(passport.session());
+    
     // Define public assets
-    app.use(express.static(__dirname + '/shop/public'));
+    app.use(express.static(__dirname + '/app/public'));
 }
     
 // Require router, passing passport for authenticating pages
-require('./shop/router')(app, passport);
+require('./app/router')(app, passport);
 
 // Listen for requests
 app.listen(3000, function() {

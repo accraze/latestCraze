@@ -25,9 +25,10 @@
     "session": "^0.1.0",
     "underscore": "*"
   },
-    "devDependencies": {
-    "chai": "*",
+  "devDependencies": {
+    "chai": "^1.10.0",
     "mocha": "*",
+    "should": "^4.5.1",
     "supertest": "^0.15.0",
     "supervisor": "*",
     "watchify": "^2.2.1"

@@ -3,6 +3,7 @@ block content
   .row
     h2 #{title}
     hr
+ if(cart)
   .row
       table.table.table-hover
         thead
@@ -11,6 +12,7 @@ block content
           th Quantity
           th Remove
         tbody
+
           each product in cart.products
             tr
               td  
@@ -25,6 +27,7 @@ block content
   .row
     form(action='/checkout/order', method='POST')
       script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key='pk_test_4mc18X8WHnWsskRFLX1nDCo6')
-
+else
+  p.lead No Order created
 block scripts
         script(src="/js/controller/checkout/order.js")

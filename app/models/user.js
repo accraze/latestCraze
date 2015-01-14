@@ -10,8 +10,8 @@ var UserSchema = new Schema({
     
     // Name
     name : { 
-        first: { type: String, required: true },
-        last: { type: String, required: true }
+        first: { type: String, required: false },
+        last: { type: String, required: false }
     },
     
     // Address

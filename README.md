@@ -1,4 +1,9 @@
-##Getting Started
+#The Latest Craze
+Simple end-to-end e-commerce solution written in NodeJS with Stripe payment gate.
+
+
+##Running locally
+###Getting Started
 Make sure you have a mongo instance running.
 Open a new terminal and type `mongod`.
 

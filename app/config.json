@@ -1,6 +1,6 @@
 {
     
-    "connection" : "mongodb://accraze:red1345@ds053708.mongolab.com:53708/latestcraze",
+    "connection" : "mongodb://localhost/latestCraze",
     "cookie_secret" : "meowmeow",
     
     "store" : {

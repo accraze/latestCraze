@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "54b5bd5a2d93e9d0f0e2f3ba" }, "name" : "SWC Album", "featured" : true, "description" : "Music made by telekinetic sound-makers dwelling in the desert. Take a listen at southwestcircular.com", "pricing" : { "retail" : 5, "cost" : 5 } }

@@ -1,4 +1,4 @@
-#The Latest Craze
+#The Latest Craze <img src="https://travis-ci.org/accraze/latestCraze.svg?branch=master">
 Simple end-to-end e-commerce solution written in NodeJS with Stripe payment gate.
 
 

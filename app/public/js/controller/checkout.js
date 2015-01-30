@@ -12,7 +12,7 @@ $(document).ready(function() {
     $(document).on('click', "i", function(e) {
         var remId = $(this).attr('remId');
         if (remId) {$.post('/cart/rem/' + remId, function(data) {
-            $('#cart').html(data);
+            //$('#cart').html(data);
             location.reload();
         });}
         e.preventDefault();

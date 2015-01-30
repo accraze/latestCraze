@@ -3,31 +3,31 @@ block content
   .row
     h2 #{title}
     hr
- if(cart)
-  .row
-      table.table.table-hover
-        thead
-          th Name
-          th Price
-          th Quantity
-          th Remove
-        tbody
+  if(cart)
+    .row
+        table.table.table-hover
+          thead
+            th Name
+            th Price
+            th Quantity
+            th Remove
+          tbody
 
-          each product in cart.products
-            tr
-              td  
-                a(href='/product/#{product.name}') #{product.name}
-              td  $#{product.price}
-              td= product.quantity
-              td 
-                i.icon-remove
-  .row
-     .pull-right
-        h4 Total: $#{cart.total}
-  .row
-    form(action='/checkout/order', method='POST')
-      script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key='pk_test_4mc18X8WHnWsskRFLX1nDCo6')
-else
-  p.lead No Order created
-block scripts
-        script(src="/js/controller/checkout/order.js")
+            each product in cart.products
+              tr
+                td  
+                  a(href='/product/#{product.name}') #{product.name}
+                td  $#{product.price}
+                td= product.quantity
+                td 
+                  i.icon-remove
+    .row
+       .pull-right
+          h4 Total: $#{cart.total}
+    .row
+      form(action='/checkout/order', method='POST')
+        script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key='pk_test_4mc18X8WHnWsskRFLX1nDCo6')
+  else
+    p.lead No Order created
+  block scripts
+          script(src="/js/controller/checkout/order.js")

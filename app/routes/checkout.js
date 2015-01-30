@@ -21,6 +21,7 @@ module.exports = {
     
     // Order form
     getOrder: function (req,res) {
+                console.log(req.session.cart);
                 res.render('checkout/order', {
                 store: config.store.name,
                 title: 'Your Order',
@@ -69,7 +70,7 @@ module.exports = {
                     from: 'The Latest Craze  <latestcraze@blurdybloop.com>', // sender address
                     to: req.user.email, // list of receivers
                     subject: 'Order Confirmation', // Subject line
-                    text: 'Thanks for purchasing a widget at The latest craze!', // plaintext body
+                    text: 'Thanks for purchasing music at The Latest Craze!', // plaintext body
                 };
 
                 // send mail with defined transport object

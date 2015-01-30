@@ -83,7 +83,7 @@ module.exports = {
             // Remove cart if empty
             if (req.session.cart.count === 0) {
                 delete req.session.cart;
-                res.redirect('cart', {cart: undefined});
+                res.render('cart/cart', {cart: undefined});
             } 
             
             // Respond with rendered cart

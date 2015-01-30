@@ -4,7 +4,6 @@ var main = require('./routes/main');
 var modals = require('./routes/modals');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
-var category = require('./routes/category');
 var checkout = require('./routes/checkout');
 
 // Function to only allow acess if authenticated

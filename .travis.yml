@@ -10,3 +10,4 @@ env:
     - BUILD_DIR=`pwd`/accraze
 before_script:
   - npm install
+  - mongo localhost:27017/latestCraze seed.js

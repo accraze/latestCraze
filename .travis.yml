@@ -9,5 +9,4 @@ env:
     - NODE_ENV=travisci
     - BUILD_DIR=`pwd`/accraze
 before_script:
-  - bower install
   - npm install
